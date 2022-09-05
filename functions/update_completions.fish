@@ -72,6 +72,11 @@ function update_completions --description 'Update completions'
         cp /tmp/fd-v8.4.0-x86_64-unknown-linux-gnu/autocomplete/fd.fish $completions_dir/fd.fish
         rm -rf /tmp/fd*
     end
+
+    echo "Update GitHub CLI completions"
+    if command_exist gh
+        gh completion -s fish > ~/.config/fish/completions/gh.fish
+    end
 end
 
 function command_exist
