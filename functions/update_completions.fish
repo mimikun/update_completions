@@ -22,9 +22,11 @@ function update_completions --description 'Update completions'
         bun completions >/dev/null 2>&1
     end
 
-    echo "Update: chezmoi completions"
-    if command_exist chezmoi
-        chezmoi completion fish > $completions_dir/chezmoi.fish
+    echo "Update: chezmoi, flyctl completions"
+    for cmd in chezmoi flyctl
+        if command_exist $cmd
+            $cmd completion fish > $completions_dir/$cmd.fish
+        end
     end
 
     echo "Update: bat completions"
