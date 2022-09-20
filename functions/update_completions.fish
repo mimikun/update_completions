@@ -77,7 +77,7 @@ function update_completions --description 'Update completions'
 
     echo "Update GitHub CLI completions"
     if command_exist gh
-        gh completion -s fish > ~/.config/fish/completions/gh.fish
+        gh completion -s fish > $completions_dir/gh.fish
     end
 end
 
