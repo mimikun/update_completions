@@ -79,6 +79,11 @@ function update_completions --description 'Update completions'
     if command_exist gh
         gh completion -s fish > $completions_dir/gh.fish
     end
+
+    echo "Update yq completions"
+    if command_exist yq
+        yq shell-completion fish > $completions_dir/yq.fish
+    end
 end
 
 function command_exist
