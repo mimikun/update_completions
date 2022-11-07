@@ -71,7 +71,7 @@ function update_completions --description 'Update completions'
         curl -L https://github.com/$fd_repo/releases/download/$fd_version/$fd_tar_file.tar.gz -o /tmp/$fd_tar_file.tar.gz >/dev/null 2>&1
         cd /tmp ; and tar xvf /tmp/$fd_tar_file.tar.gz >/dev/null 2>&1
         cd $current_dir
-        cp /tmp/fd-v8.4.0-x86_64-unknown-linux-gnu/autocomplete/fd.fish $completions_dir/fd.fish
+        cp /tmp/fd-$fd_version-x86_64-unknown-linux-gnu/autocomplete/fd.fish $completions_dir/fd.fish
         rm -rf /tmp/fd*
     end
 
