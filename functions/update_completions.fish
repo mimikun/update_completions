@@ -75,6 +75,11 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/fd*
     end
 
+    echo "Update pnpm completions"
+    if command_exist pnpm
+        pnpm install-completion fish > /dev/null 2>&1
+    end
+
     echo "Update GitHub CLI completions"
     if command_exist gh
         gh completion -s fish > $completions_dir/gh.fish
