@@ -29,6 +29,31 @@ function update_completions --description 'Update completions'
         end
     end
 
+    echo "Update pnpm completions"
+    if command_exist pnpm
+        pnpm install-completion fish > /dev/null 2>&1
+    end
+
+    echo "Update yq completions"
+    if command_exist yq
+        yq shell-completion fish > $completions_dir/yq.fish
+    end
+
+    echo "Update GitHub CLI completions"
+    if command_exist gh
+        gh completion -s fish > $completions_dir/gh.fish
+    end
+
+    echo "Update: exa completions"
+    if command_exist exa
+        curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
+    end
+
+    echo "Update: tealdeer completions"
+    if command_exist tldr
+        curl -L https://raw.githubusercontent.com/dbrgn/tealdeer/main/completion/fish_tealdeer -o $completions_dir/tldr.fish >/dev/null 2>&1
+    end
+
     echo "Update: bat completions"
     if command_exist bat
         set -l bat_repo "sharkdp/bat"
@@ -39,11 +64,6 @@ function update_completions --description 'Update completions'
         cd $current_dir
         cp /tmp/$bat_tar_file/autocomplete/bat.fish $completions_dir/bat.fish
         rm -rf /tmp/bat*
-    end
-
-    echo "Update: exa completions"
-    if command_exist exa
-        curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
     end
 
     echo "Update: ripgrep completions"
@@ -58,11 +78,6 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/ripgrep*
     end
 
-    echo "Update: tealdeer completions"
-    if command_exist tldr
-        curl -L https://raw.githubusercontent.com/dbrgn/tealdeer/main/completion/fish_tealdeer -o $completions_dir/tldr.fish >/dev/null 2>&1
-    end
-
     echo "Update: fd completions"
     if command_exist fd
         set -l fd_repo "sharkdp/fd"
@@ -73,21 +88,6 @@ function update_completions --description 'Update completions'
         cd $current_dir
         cp /tmp/fd-$fd_version-x86_64-unknown-linux-gnu/autocomplete/fd.fish $completions_dir/fd.fish
         rm -rf /tmp/fd*
-    end
-
-    echo "Update pnpm completions"
-    if command_exist pnpm
-        pnpm install-completion fish > /dev/null 2>&1
-    end
-
-    echo "Update GitHub CLI completions"
-    if command_exist gh
-        gh completion -s fish > $completions_dir/gh.fish
-    end
-
-    echo "Update yq completions"
-    if command_exist yq
-        yq shell-completion fish > $completions_dir/yq.fish
     end
 end
 
