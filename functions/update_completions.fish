@@ -8,7 +8,7 @@ function update_completions --description 'Update completions'
     echo "Update: poetry, rustup, deno and starship completions"
     for cmd in poetry rustup starship deno
         if command_exist $cmd
-            $cmd completions fish >$completions_dir/$cmd.fish
+            $cmd completions fish > $completions_dir/$cmd.fish
         end
     end
 
