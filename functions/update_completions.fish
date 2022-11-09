@@ -63,7 +63,7 @@ function update_completions --description 'Update completions'
     if command_exist bat
         set -l bat_repo "sharkdp/bat"
         set -l bat_version (curl --silent https://api.github.com/repos/$bat_repo/releases/latest | jq .tag_name -r)
-        set -l bat_tar_file "bat-$bat_version-i686-unknown-linux-gnu"
+        set -l bat_tar_file "bat-$bat_version-x86_64-unknown-linux-gnu"
         curl -L https://github.com/$bat_repo/releases/download/$bat_version/$bat_tar_file.tar.gz -o /tmp/$bat_tar_file.tar.gz >/dev/null 2>&1
         cd /tmp ; and tar xvf /tmp/$bat_tar_file.tar.gz >/dev/null 2>&1
         cd $current_dir
