@@ -44,6 +44,11 @@ function update_completions --description 'Update completions'
         gh completion -s fish > $completions_dir/gh.fish
     end
 
+    echo "Update: fd completions"
+    if command_exist fd
+        fd --gen-completions fish > $completions_dir/fd.fish
+    end
+
     echo "Update: exa completions"
     if command_exist exa
         curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
@@ -76,18 +81,6 @@ function update_completions --description 'Update completions'
         cd $current_dir
         cp /tmp/$rg_tar_file/complete/rg.fish $completions_dir/rg.fish
         rm -rf /tmp/ripgrep*
-    end
-
-    echo "Update: fd completions"
-    if command_exist fd
-        set -l fd_repo "sharkdp/fd"
-        set -l fd_version (curl --silent https://api.github.com/repos/$fd_repo/releases/latest | jq .tag_name -r)
-        set -l fd_tar_file "fd-$fd_version-x86_64-unknown-linux-gnu"
-        curl -L https://github.com/$fd_repo/releases/download/$fd_version/$fd_tar_file.tar.gz -o /tmp/$fd_tar_file.tar.gz >/dev/null 2>&1
-        cd /tmp ; and tar xvf /tmp/$fd_tar_file.tar.gz >/dev/null 2>&1
-        cd $current_dir
-        cp /tmp/fd-$fd_version-x86_64-unknown-linux-gnu/autocomplete/fd.fish $completions_dir/fd.fish
-        rm -rf /tmp/fd*
     end
 end
 
