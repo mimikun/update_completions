@@ -29,17 +29,17 @@ function update_completions --description 'Update completions'
         end
     end
 
-    echo "Update pnpm completions"
+    echo "Update: pnpm completions"
     if command_exist pnpm
         pnpm install-completion fish > /dev/null 2>&1
     end
 
-    echo "Update yq completions"
+    echo "Update: yq completions"
     if command_exist yq
         yq shell-completion fish > $completions_dir/yq.fish
     end
 
-    echo "Update GitHub CLI completions"
+    echo "Update: GitHub CLI completions"
     if command_exist gh
         gh completion -s fish > $completions_dir/gh.fish
     end
