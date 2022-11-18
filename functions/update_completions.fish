@@ -59,6 +59,12 @@ function update_completions --description 'Update completions'
         curl -L https://raw.githubusercontent.com/dbrgn/tealdeer/main/completion/fish_tealdeer -o $completions_dir/tldr.fish >/dev/null 2>&1
     end
 
+    echo "Update: httpie completions"
+    if command_exist http
+        curl -L https://raw.githubusercontent.com/httpie/httpie/master/extras/httpie-completion.fish -o $completions_dir/http.fish >/dev/null 2>&1
+        cp $completions_dir/http.fish $completions_dir/https.fish >/dev/null 2>&1
+    end
+
     echo "Update: bat completions"
     if command_exist bat
         set -l bat_repo "sharkdp/bat"
