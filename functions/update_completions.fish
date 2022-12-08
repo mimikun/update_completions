@@ -49,6 +49,11 @@ function update_completions --description 'Update completions'
         fd --gen-completions fish > $completions_dir/fd.fish
     end
 
+    echo "Update: pueue completions"
+    if command_exist pueue
+        pueue completions fish $completions_dir
+    end
+
     echo "Update: exa completions"
     if command_exist exa
         curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
