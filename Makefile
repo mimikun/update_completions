@@ -18,5 +18,23 @@ copy2win :
 
 .PHONY : clean
 clean :
+	rm -f fmt-*
 	rm -f *.patch
 
+.PHONY : install
+install :
+	bash ./install.sh
+
+.PHONY : lint
+lint :
+	shellcheck ./*.sh
+
+.PHONY : test
+test : lint
+
+.PHONY : format
+format :
+	bash ./format.sh
+
+.PHONY : fmt
+fmt : format
