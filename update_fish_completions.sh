@@ -49,6 +49,14 @@ if command_exist fd; then
   pueue add -- "fd --gen-completions fish > '${COMPLETIONS_DIR}'/fd.fish"
 fi
 
+if command_exist zellij; then
+  pueue add -- "zellij setup --generate-completion fish > '${COMPLETIONS_DIR}'/zellij.fish"
+fi
+
+if command_exist pipx; then
+  pueue add -- "register-python-argcomplete --shell fish pipx > '${COMPLETIONS_DIR}'/pipx.fish"
+fi
+
 if command_exist exa; then
   pueue add -- "curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o '${COMPLETIONS_DIR}'/exa.fish"
 fi
