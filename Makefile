@@ -2,7 +2,7 @@ today = $(shell date "+%Y%m%d")
 product_name = update_completions
 
 .PHONY : patch
-patch : clean diff-patch copy2win
+patch : clean diff-patch patch-copy2win
 
 .PHONY : diff-patch
 diff-patch :
@@ -12,29 +12,29 @@ diff-patch :
 patch-branch :
 	git switch -c patch-$(today)
 
-.PHONY : copy2win
-copy2win :
+.PHONY : patch-copy2win
+patch-copy2win :
 	cp *.patch $$WIN_HOME/Downloads/
+
+.PHONY : install
+install :
+	bash utils/install.sh
 
 .PHONY : clean
 clean :
 	rm -f fmt-*
 	rm -f *.patch
 
-.PHONY : install
-install :
-	bash ./install.sh
-
 .PHONY : lint
 lint :
-	shellcheck ./*.sh
+	bash utils/lint.sh
 
 .PHONY : test
 test : lint
 
 .PHONY : format
 format :
-	bash ./format.sh
+	bash utils/format.sh
 
 .PHONY : fmt
 fmt : format
