@@ -23,7 +23,7 @@ function update_completions --description 'Update completions'
     end
 
     echo "Update: chezmoi, flyctl, and runme completions"
-    for cmd in chezmoi flyctl runme
+    for cmd in chezmoi flyctl runme bin
         if command_exist $cmd
             $cmd completion fish > $completions_dir/$cmd.fish
         end
