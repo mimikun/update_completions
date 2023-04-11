@@ -22,7 +22,7 @@ function update_completions --description 'Update completions'
         bun completions >/dev/null 2>&1
     end
 
-    echo "Update: chezmoi, flyctl, and runme completions"
+    echo "Update: chezmoi, flyctl, bin and runme completions"
     for cmd in chezmoi flyctl runme bin
         if command_exist $cmd
             $cmd completion fish > $completions_dir/$cmd.fish
@@ -52,6 +52,21 @@ function update_completions --description 'Update completions'
     echo "Update: pueue completions"
     if command_exist pueue
         pueue completions fish $completions_dir
+    end
+
+    echo "Update pipx completions"
+    if command_exist pipx
+        register-python-argcomplete --shell fish pipx > $completions_dir/pipx.fish
+    end
+
+    echo "Update zellij completions"
+    if command_exist zellij
+        zellij setup --generate-completion fish > $completions_dir/zellij.fish
+    end
+
+    echo "Update wezterm completions"
+    if command_exist wezterm
+        wezterm shell-completion --shell fish > $completions_dir/wezterm.fish
     end
 
     echo "Update: exa completions"
@@ -103,4 +118,3 @@ function command_exist
         return 1
     end
 end
-
