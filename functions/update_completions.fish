@@ -69,6 +69,11 @@ function update_completions --description 'Update completions'
         wezterm shell-completion --shell fish > $completions_dir/wezterm.fish
     end
 
+    echo "Update rye completions"
+    if command_exist rye
+        rye self completion -s fish > $completions_dir/rye.fish
+    end
+
     echo "Update: exa completions"
     if command_exist exa
         curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
