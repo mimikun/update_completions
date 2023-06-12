@@ -17,6 +17,11 @@ function update_completions --description 'Update completions'
         cp ~/.asdf/completions/asdf.fish $completions_dir/asdf.fish
     end
 
+    echo "Update brew completions"
+    if command_exist brew
+        cp (brew --prefix)/Homebrew/completions/fish/brew.fish $completions_dir/brew.fish
+    end
+
     echo "Update: bun completions"
     if command_exist bun
         bun completions >/dev/null 2>&1

@@ -69,6 +69,10 @@ if command_exist pueue; then
   pueue add -- "pueue completions fish '${COMPLETIONS_DIR}'"
 fi
 
+if command_exist brew; then
+  pueue add -- "cp $(brew --prefix)/Homebrew/completions/fish/brew.fish ${COMPLETIONS_DIR}/brew.fish"
+fi
+
 if command_exist exa; then
   pueue add -- "curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o '${COMPLETIONS_DIR}'/exa.fish"
 fi
