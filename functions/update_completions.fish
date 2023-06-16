@@ -131,7 +131,6 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/helix*
     end
 end
-end
 
 function command_exist
     if type $argv[1] >/dev/null 2>&1
