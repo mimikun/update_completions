@@ -7,6 +7,7 @@ run_lint() {
 run_lint update_bat_fish_completion.sh
 run_lint update_fish_completions.sh
 run_lint update_ripgrep_fish_completion.sh
+run_lint update_helix_fish_completion.sh
 
 run_lint utils/format.sh
 run_lint utils/install.sh

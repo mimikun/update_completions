@@ -17,3 +17,4 @@ before_sudo
 run_install update_bat_fish_completion
 run_install update_fish_completions
 run_install update_ripgrep_fish_completion
+run_install update_helix_fish_completion.sh
