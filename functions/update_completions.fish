@@ -118,6 +118,19 @@ function update_completions --description 'Update completions'
         cp /tmp/$rg_tar_file/complete/rg.fish $completions_dir/rg.fish
         rm -rf /tmp/ripgrep*
     end
+
+    echo "Update: helix completions"
+    if command_exist hx
+        set -l hx_repo "helix-editor/helix"
+        set -l hx_version (curl --silent https://api.github.com/repos/$hx_repo/releases/latest | jq .tag_name -r)
+        set -l hx_tar_file "helix-$hx_version-x86_64-linux"
+        curl -L https://github.com/$hx_repo/releases/download/$hx_version/$hx_tar_file.tar.xz -o /tmp/$hx_tar_file.tar.xz >/dev/null 2>&1
+        cd /tmp ; and tar xvf /tmp/$hx_tar_file.tar.xz >/dev/null 2>&1
+        cd $current_dir
+        cp /tmp/$hx_tar_file/contrib/completion/hx.fish $completions_dir/hx.fish
+        rm -rf /tmp/helix*
+    end
+end
 end
 
 function command_exist
