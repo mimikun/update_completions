@@ -79,6 +79,11 @@ function update_completions --description 'Update completions'
         rye self completion -s fish > $completions_dir/rye.fish
     end
 
+    echo "Update procs completions"
+    if command_exist procs
+        procs --gen-completion-out fish > $completions_dir/procs.fish
+    end
+
     echo "Update: exa completions"
     if command_exist exa
         curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
