@@ -94,6 +94,11 @@ function update_completions --description 'Update completions'
         curl -L https://raw.githubusercontent.com/dbrgn/tealdeer/main/completion/fish_tealdeer -o $completions_dir/tldr.fish >/dev/null 2>&1
     end
 
+    echo "Update: zoxide completions"
+    if command_exist zoxide
+      curl -L https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/contrib/completions/zoxide.fish -o $completions_dir/zoxide.fish >/dev/null 2>&1
+    end
+
     echo "Update: httpie completions"
     if command_exist http
         curl -L https://raw.githubusercontent.com/httpie/httpie/master/extras/httpie-completion.fish -o $completions_dir/http.fish >/dev/null 2>&1
