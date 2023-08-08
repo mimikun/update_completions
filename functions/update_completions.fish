@@ -12,17 +12,17 @@ function update_completions --description 'Update completions'
         end
     end
 
-    echo "Update: asdf completions"
+    echo "Update: asdf completion"
     if command_exist asdf
         cp ~/.asdf/completions/asdf.fish $completions_dir/asdf.fish
     end
 
-    echo "Update brew completions"
+    echo "Update brew completion"
     if command_exist brew
         cp (brew --prefix)/Homebrew/completions/fish/brew.fish $completions_dir/brew.fish
     end
 
-    echo "Update: bun completions"
+    echo "Update: bun completion"
     if command_exist bun
         bun completions >/dev/null 2>&1
     end
@@ -34,67 +34,67 @@ function update_completions --description 'Update completions'
         end
     end
 
-    echo "Update: pnpm completions"
+    echo "Update: pnpm completion"
     if command_exist pnpm
         pnpm install-completion fish > /dev/null 2>&1
     end
 
-    echo "Update: yq completions"
+    echo "Update: yq completion"
     if command_exist yq
         yq shell-completion fish > $completions_dir/yq.fish
     end
 
-    echo "Update: GitHub CLI completions"
+    echo "Update: GitHub CLI completion"
     if command_exist gh
         gh completion -s fish > $completions_dir/gh.fish
     end
 
-    echo "Update: fd completions"
+    echo "Update: fd completion"
     if command_exist fd
         fd --gen-completions fish > $completions_dir/fd.fish
     end
 
-    echo "Update: pueue completions"
+    echo "Update: pueue completion"
     if command_exist pueue
         pueue completions fish $completions_dir
     end
 
-    echo "Update pipx completions"
+    echo "Update pipx completion"
     if command_exist pipx
         register-python-argcomplete --shell fish pipx > $completions_dir/pipx.fish
     end
 
-    echo "Update zellij completions"
+    echo "Update zellij completion"
     if command_exist zellij
         zellij setup --generate-completion fish > $completions_dir/zellij.fish
     end
 
-    echo "Update wezterm completions"
+    echo "Update wezterm completion"
     if command_exist wezterm
         wezterm shell-completion --shell fish > $completions_dir/wezterm.fish
     end
 
-    echo "Update rye completions"
+    echo "Update rye completion"
     if command_exist rye
         rye self completion -s fish > $completions_dir/rye.fish
     end
 
-    echo "Update procs completions"
+    echo "Update procs completion"
     if command_exist procs
         procs --gen-completion-out fish > $completions_dir/procs.fish
     end
 
-    echo "Update: exa completions"
+    echo "Update: exa completion"
     if command_exist exa
         curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
     end
 
-    echo "Update: tealdeer completions"
+    echo "Update: tealdeer completion"
     if command_exist tldr
         curl -L https://raw.githubusercontent.com/dbrgn/tealdeer/main/completion/fish_tealdeer -o $completions_dir/tldr.fish >/dev/null 2>&1
     end
 
-    echo "Update: zoxide completions"
+    echo "Update: zoxide completion"
     if command_exist zoxide
       curl -L https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/contrib/completions/zoxide.fish -o $completions_dir/zoxide.fish >/dev/null 2>&1
     end
@@ -105,7 +105,7 @@ function update_completions --description 'Update completions'
         cp $completions_dir/http.fish $completions_dir/https.fish >/dev/null 2>&1
     end
 
-    echo "Update: bat completions"
+    echo "Update: bat completion"
     if command_exist bat
         set -l bat_repo "sharkdp/bat"
         set -l bat_version (curl --silent https://api.github.com/repos/$bat_repo/releases/latest | jq .tag_name -r)
@@ -117,7 +117,7 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/bat*
     end
 
-    echo "Update: ripgrep completions"
+    echo "Update: ripgrep completion"
     if command_exist rg
         set -l rg_repo "BurntSushi/ripgrep"
         set -l rg_version (curl --silent https://api.github.com/repos/$rg_repo/releases/latest | jq .tag_name -r)
@@ -129,7 +129,7 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/ripgrep*
     end
 
-    echo "Update: helix completions"
+    echo "Update: helix completion"
     if command_exist hx
         set -l hx_repo "helix-editor/helix"
         set -l hx_version (curl --silent https://api.github.com/repos/$hx_repo/releases/latest | jq .tag_name -r)
