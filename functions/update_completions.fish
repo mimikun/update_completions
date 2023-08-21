@@ -17,7 +17,7 @@ function update_completions --description 'Update completions'
         cp ~/.asdf/completions/asdf.fish $completions_dir/asdf.fish
     end
 
-    echo "Update brew completion"
+    echo "Update: brew completion"
     if command_exist brew
         cp (brew --prefix)/Homebrew/completions/fish/brew.fish $completions_dir/brew.fish
     end
@@ -59,27 +59,27 @@ function update_completions --description 'Update completions'
         pueue completions fish $completions_dir
     end
 
-    echo "Update pipx completion"
+    echo "Update: pipx completion"
     if command_exist pipx
         register-python-argcomplete --shell fish pipx > $completions_dir/pipx.fish
     end
 
-    echo "Update zellij completion"
+    echo "Update: zellij completion"
     if command_exist zellij
         zellij setup --generate-completion fish > $completions_dir/zellij.fish
     end
 
-    echo "Update wezterm completion"
+    echo "Update: wezterm completion"
     if command_exist wezterm
         wezterm shell-completion --shell fish > $completions_dir/wezterm.fish
     end
 
-    echo "Update rye completion"
+    echo "Update: rye completion"
     if command_exist rye
         rye self completion -s fish > $completions_dir/rye.fish
     end
 
-    echo "Update procs completion"
+    echo "Update: procs completion"
     if command_exist procs
         procs --gen-completion-out fish > $completions_dir/procs.fish
     end
