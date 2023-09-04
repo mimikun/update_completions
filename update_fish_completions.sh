@@ -90,7 +90,7 @@ if command_exist tldr; then
 fi
 
 if command_exist zoxide; then
-  pueue add -- "curl -L https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/contrib/completions/zoxide.fish -o '${COMPLETIONS_DIR}'zoxide.fish"
+  pueue add -- "curl -L https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/contrib/completions/zoxide.fish -o '${COMPLETIONS_DIR}'/zoxide.fish"
 fi
 
 if command_exist http; then
