@@ -89,9 +89,9 @@ function update_completions --description 'Update completions'
       sheldon completions --shell fish > $completions_dir/sheldon.fish
     end
 
-    echo "Update: exa completion"
-    if command_exist exa
-        curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/fish/exa.fish -o $completions_dir/exa.fish >/dev/null 2>&1
+    echo "Update: eza completion"
+    if command_exist eza
+        curl -L https://raw.githubusercontent.com/eza-community/eza/main/completions/fish/eza.fish -o $completions_dir/exa.fish >/dev/null 2>&1
     end
 
     echo "Update: tealdeer completion"
