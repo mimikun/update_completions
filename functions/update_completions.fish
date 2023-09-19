@@ -122,6 +122,18 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/bat*
     end
 
+    echo "Update: hyperfine completion"
+    if command_exist hyperfine
+        set -l hyperfine_repo "sharkdp/hyperfine"
+        set -l hyperfine_version (curl --silent https://api.github.com/repos/$hyperfine_repo/releases/latest | jq .tag_name -r)
+        set -l hyperfine_tar_file "hyperfine-$hyperfine_version-x86_64-unknown-linux-gnu"
+        curl -L https://github.com/$hyperfine_repo/releases/download/$hyperfine_version/$hyperfine_tar_file.tar.gz -o /tmp/$hyperfine_tar_file.tar.gz >/dev/null 2>&1
+        cd /tmp ; and tar xvf /tmp/$hyperfine_tar_file.tar.gz >/dev/null 2>&1
+        cd $current_dir
+        cp /tmp/$hyperfine_tar_file/autocomplete/hyperfine.fish $completions_dir/hyperfine.fish
+        rm -rf /tmp/hyperfine*
+    end
+
     echo "Update: ripgrep completion"
     if command_exist rg
         set -l rg_repo "BurntSushi/ripgrep"

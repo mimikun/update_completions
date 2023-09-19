@@ -12,6 +12,7 @@ run_shfmt update_bat_fish_completion.sh
 run_shfmt update_fish_completions.sh
 run_shfmt update_ripgrep_fish_completion.sh
 run_shfmt update_helix_fish_completion.sh
+run_shfmt update_hyperfine_fish_completion.sh
 
 cd utils || exit
 run_shfmt format.sh
