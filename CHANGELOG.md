@@ -1,5 +1,23 @@
 ## Changelog
 
+## [v2023.11.27]
+
+### Added - 新機能について
+
+- Add ripgrep completion(new method)
+
+### Changed - 既存機能の変更について
+
+なし
+
+### Removed - 今回で削除された機能について
+
+- Remove update_ripgrep_fish_completion.sh
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2023.09.19]
 
 ### Added - 新機能について
