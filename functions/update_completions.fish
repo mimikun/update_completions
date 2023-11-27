@@ -136,14 +136,7 @@ function update_completions --description 'Update completions'
 
     echo "Update: ripgrep completion"
     if command_exist rg
-        set -l rg_repo "BurntSushi/ripgrep"
-        set -l rg_version (curl --silent https://api.github.com/repos/$rg_repo/releases/latest | jq .tag_name -r)
-        set -l rg_tar_file "ripgrep-$rg_version-x86_64-unknown-linux-musl"
-        curl -L https://github.com/$rg_repo/releases/download/$rg_version/$rg_tar_file.tar.gz -o /tmp/$rg_tar_file.tar.gz >/dev/null 2>&1
-        cd /tmp ; and tar xvf /tmp/$rg_tar_file.tar.gz >/dev/null 2>&1
-        cd $current_dir
-        cp /tmp/$rg_tar_file/complete/rg.fish $completions_dir/rg.fish
-        rm -rf /tmp/ripgrep*
+        rg --generate complete-fish > $completions_dir/rg.fish
     end
 
     echo "Update: helix completion"
