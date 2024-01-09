@@ -12,11 +12,6 @@ function update_completions --description 'Update completions'
         end
     end
 
-    echo "Update: asdf completion"
-    if command_exist asdf
-        cp ~/.asdf/completions/asdf.fish $completions_dir/asdf.fish
-    end
-
     echo "Update: brew completion"
     if command_exist brew
         cp (brew --prefix)/Homebrew/completions/fish/brew.fish $completions_dir/brew.fish
