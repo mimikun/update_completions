@@ -1,5 +1,23 @@
 ## Changelog
 
+## [v2024.01.09]
+
+### Added - 新機能について
+
+なし
+
+### Changed - 既存機能の変更について
+
+なし
+
+### Removed - 今回で削除された機能について
+
+- Remove asdf completion
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2024.01.04]
 
 ### Added - 新機能について
