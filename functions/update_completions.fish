@@ -145,6 +145,11 @@ function update_completions --description 'Update completions'
         cp /tmp/$hx_tar_file/contrib/completion/hx.fish $completions_dir/hx.fish
         rm -rf /tmp/helix*
     end
+
+    echo "Update: alacritty completion"
+    if command_exist alacritty
+        curl -L https://raw.githubusercontent.com/alacritty/alacritty/master/extra/completions/alacritty.fish -o $completions_dir/alacritty.fish >/dev/null 2>&1
+    end
 end
 
 function command_exist
