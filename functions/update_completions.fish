@@ -134,6 +134,11 @@ function update_completions --description 'Update completions'
         rg --generate complete-fish > $completions_dir/rg.fish
     end
 
+    echo "Update: rbw completion"
+    if command_exist rbw
+        rbw gen-completions fish > $completions_dir/rbw.fish
+    end
+
     echo "Update: helix completion"
     if command_exist hx
         set -l hx_repo "helix-editor/helix"
