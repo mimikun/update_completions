@@ -1,5 +1,23 @@
 ## Changelog
 
+## [v2024.03.06]
+
+### Added - 新機能について
+
+- Add gopass completion
+
+### Changed - 既存機能の変更について
+
+なし
+
+### Removed - 今回で削除された機能について
+
+なし
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2024.01.18]
 
 ### Added - 新機能について
