@@ -14,6 +14,9 @@ run_shfmt update_helix_fish_completion.sh
 run_shfmt update_hyperfine_fish_completion.sh
 
 cd utils || exit
+run_shfmt changelog.sh
+run_shfmt clean.sh
+run_shfmt create-patch.sh
 run_shfmt format.sh
 run_shfmt install.sh
 run_shfmt lint.sh
