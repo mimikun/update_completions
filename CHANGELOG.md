@@ -1,5 +1,25 @@
 ## Changelog
 
+## [v2024.03.27]
+
+### Added - 新機能について
+
+- feat!: add uv completion
+- feat: add npm deps
+
+### Changed - 既存機能の変更について
+
+- feat: update gitignore
+- feat!: update makefiles
+
+### Removed - 今回で削除された機能について
+
+なし
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2024.03.06]
 
 ### Added - 新機能について
