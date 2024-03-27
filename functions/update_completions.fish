@@ -155,6 +155,11 @@ function update_completions --description 'Update completions'
     if command_exist alacritty
         curl -L https://raw.githubusercontent.com/alacritty/alacritty/master/extra/completions/alacritty.fish -o $completions_dir/alacritty.fish >/dev/null 2>&1
     end
+
+    echo "Update: uv completion"
+    if command_exist uv
+        uv --generate-shell-completion fish > $completions_dir/uv.fish
+    end
 end
 
 function command_exist
