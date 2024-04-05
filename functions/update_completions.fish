@@ -160,6 +160,11 @@ function update_completions --description 'Update completions'
     if command_exist uv
         uv --generate-shell-completion fish > $completions_dir/uv.fish
     end
+
+    echo "Update: ghq completion"
+    if command_exist ghq
+        curl -L https://raw.githubusercontent.com/x-motemen/ghq/master/misc/fish/ghq.fish -o $completions_dir/ghq.fish >/dev/null 2>&1
+    end
 end
 
 function command_exist
