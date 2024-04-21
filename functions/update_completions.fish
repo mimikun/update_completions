@@ -22,16 +22,11 @@ function update_completions --description 'Update completions'
         bun completions >/dev/null 2>&1
     end
 
-    echo "Update: chezmoi, flyctl, bin, mise, luarocks, gopass glow and runme completions"
-    for cmd in chezmoi flyctl runme bin mise luarocks gopass glow
+    echo "Update: chezmoi, flyctl, bin, mise, luarocks, gopass glow pnpm and runme completions"
+    for cmd in chezmoi flyctl runme bin mise luarocks gopass glow pnpm
         if command_exist $cmd
             $cmd completion fish > $completions_dir/$cmd.fish
         end
-    end
-
-    echo "Update: pnpm completion"
-    if command_exist pnpm
-        pnpm install-completion fish > /dev/null 2>&1
     end
 
     echo "Update: yq completion"
