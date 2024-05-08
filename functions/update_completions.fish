@@ -5,8 +5,8 @@ function update_completions --description 'Update completions'
     echo "Update: default commands completions"
     fish_update_completions >/dev/null 2>&1
 
-    echo "Update: poetry, rustup, deno and starship completions"
-    for cmd in poetry rustup starship deno
+    echo "Update: poetry, rustup, deno, mdbook and starship completions"
+    for cmd in poetry rustup starship deno mdbook
         if command_exist $cmd
             $cmd completions fish > $completions_dir/$cmd.fish
         end
