@@ -153,6 +153,11 @@ function update_completions --description 'Update completions'
     if command_exist ghq
         curl -L https://raw.githubusercontent.com/x-motemen/ghq/master/misc/fish/ghq.fish -o $completions_dir/ghq.fish >/dev/null 2>&1
     end
+
+    echo "Update: fish-lsp completion"
+    if command_exist fish-lsp
+        fish-lsp complete --fish > $completions_dir/fish-lsp.fish
+    end
 end
 
 function command_exist

@@ -121,3 +121,7 @@ fi
 if command_exist ghq; then
   pueue add -- "curl -L https://raw.githubusercontent.com/x-motemen/ghq/master/misc/fish/ghq.fish -o '${COMPLETIONS_DIR}'/ghq.fish"
 fi
+
+if command_exist fish-lsp; then
+  pueue add -- "fish-lsp complete --fish > '${COMPLETIONS_DIR}'/fish-lsp.fish"
+fi
