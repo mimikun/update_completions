@@ -103,7 +103,7 @@ if command_exist rg; then
 fi
 
 if command_exist hx; then
-  pueue add -- "update_helix_fish_completion"
+  pueue add -- "curl -L https://raw.githubusercontent.com/helix-editor/helix/master/contrib/completion/hx.fish -o '${COMPLETIONS_DIR}'/hx.fish"
 fi
 
 if command_exist hyperfine; then
