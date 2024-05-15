@@ -7,6 +7,7 @@ run_lint() {
 run_lint update_bat_fish_completion.sh
 run_lint update_fish_completions.sh
 run_lint update_hyperfine_fish_completion.sh
+run_lint update_pastel_fish_completion.sh
 
 run_lint utils/changelog.sh
 run_lint utils/clean.sh

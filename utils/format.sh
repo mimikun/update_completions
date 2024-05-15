@@ -11,6 +11,7 @@ run_shfmt() {
 run_shfmt update_bat_fish_completion.sh
 run_shfmt update_fish_completions.sh
 run_shfmt update_hyperfine_fish_completion.sh
+run_shfmt update_pastel_fish_completion.sh
 
 cd utils || exit
 run_shfmt changelog.sh

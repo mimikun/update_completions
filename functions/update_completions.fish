@@ -124,6 +124,18 @@ function update_completions --description 'Update completions'
         rm -rf /tmp/hyperfine*
     end
 
+    echo "Update: pastel completion"
+    if command_exist pastel
+        set -l pastel_repo "sharkdp/pastel"
+        set -l pastel_version (curl --silent https://api.github.com/repos/$pastel_repo/releases/latest | jq .tag_name -r)
+        set -l pastel_tar_file "pastel-$pastel_version-x86_64-unknown-linux-gnu"
+        curl -L https://github.com/$pastel_repo/releases/download/$pastel_version/$pastel_tar_file.tar.gz -o /tmp/$pastel_tar_file.tar.gz >/dev/null 2>&1
+        cd /tmp ; and tar xvf /tmp/$pastel_tar_file.tar.gz >/dev/null 2>&1
+        cd $current_dir
+        cp /tmp/$pastel_tar_file/autocomplete/pastel.fish $completions_dir/pastel.fish
+        rm -rf /tmp/pastel*
+    end
+
     echo "Update: ripgrep completion"
     if command_exist rg
         rg --generate complete-fish > $completions_dir/rg.fish
