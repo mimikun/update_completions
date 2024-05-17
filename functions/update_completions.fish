@@ -1,6 +1,5 @@
 function update_completions --description 'Update completions'
     set -l completions_dir $__fish_config_dir/completions
-    set -l current_dir (pwd)
 
     echo "Update: default commands completions"
     fish_update_completions >/dev/null 2>&1
@@ -100,42 +99,6 @@ function update_completions --description 'Update completions'
         cp $completions_dir/http.fish $completions_dir/https.fish >/dev/null 2>&1
     end
 
-    echo "Update: bat completion"
-    if command_exist bat
-        set -l bat_repo "sharkdp/bat"
-        set -l bat_version (curl --silent https://api.github.com/repos/$bat_repo/releases/latest | jq .tag_name -r)
-        set -l bat_tar_file "bat-$bat_version-x86_64-unknown-linux-gnu"
-        curl -L https://github.com/$bat_repo/releases/download/$bat_version/$bat_tar_file.tar.gz -o /tmp/$bat_tar_file.tar.gz >/dev/null 2>&1
-        cd /tmp ; and tar xvf /tmp/$bat_tar_file.tar.gz >/dev/null 2>&1
-        cd $current_dir
-        cp /tmp/$bat_tar_file/autocomplete/bat.fish $completions_dir/bat.fish
-        rm -rf /tmp/bat*
-    end
-
-    echo "Update: hyperfine completion"
-    if command_exist hyperfine
-        set -l hyperfine_repo "sharkdp/hyperfine"
-        set -l hyperfine_version (curl --silent https://api.github.com/repos/$hyperfine_repo/releases/latest | jq .tag_name -r)
-        set -l hyperfine_tar_file "hyperfine-$hyperfine_version-x86_64-unknown-linux-gnu"
-        curl -L https://github.com/$hyperfine_repo/releases/download/$hyperfine_version/$hyperfine_tar_file.tar.gz -o /tmp/$hyperfine_tar_file.tar.gz >/dev/null 2>&1
-        cd /tmp ; and tar xvf /tmp/$hyperfine_tar_file.tar.gz >/dev/null 2>&1
-        cd $current_dir
-        cp /tmp/$hyperfine_tar_file/autocomplete/hyperfine.fish $completions_dir/hyperfine.fish
-        rm -rf /tmp/hyperfine*
-    end
-
-    echo "Update: pastel completion"
-    if command_exist pastel
-        set -l pastel_repo "sharkdp/pastel"
-        set -l pastel_version (curl --silent https://api.github.com/repos/$pastel_repo/releases/latest | jq .tag_name -r)
-        set -l pastel_tar_file "pastel-$pastel_version-x86_64-unknown-linux-gnu"
-        curl -L https://github.com/$pastel_repo/releases/download/$pastel_version/$pastel_tar_file.tar.gz -o /tmp/$pastel_tar_file.tar.gz >/dev/null 2>&1
-        cd /tmp ; and tar xvf /tmp/$pastel_tar_file.tar.gz >/dev/null 2>&1
-        cd $current_dir
-        cp /tmp/$pastel_tar_file/autocomplete/pastel.fish $completions_dir/pastel.fish
-        rm -rf /tmp/pastel*
-    end
-
     echo "Update: ripgrep completion"
     if command_exist rg
         rg --generate complete-fish > $completions_dir/rg.fish
@@ -170,6 +133,13 @@ function update_completions --description 'Update completions'
     if command_exist fish-lsp
         fish-lsp complete --fish > $completions_dir/fish-lsp.fish
     end
+
+    echo "Update: sharkdp/bat, sharkdp/hyperfine and sharkdp/pastel completions"
+    for cmd in bat hyperfine pastel
+        if command_exist $cmd
+            update_sharkdp_tool_completions $cmd
+        end
+    end
 end
 
 function command_exist
@@ -179,4 +149,21 @@ function command_exist
         echo $argv[1]: not found
         return 1
     end
+end
+
+function update_sharkdp_tool_completions
+    set -l completions_dir $__fish_config_dir/completions
+    set -l cmd_name $argv[1]
+    set -l repo_name sharkdp/$cmd_name
+    set -l cmd_version (curl --silent https://api.github.com/repos/$repo_name/releases/latest | jq .tag_name -r)
+    set -l archive_name "$cmd_name-$cmd_version-x86_64-unknown-linux-gnu"
+    set -l archive_format "tar.gz"
+    set -l archive_file "$archive_name.$archive_format"
+    set -l download_url "https://github.com/$repo_name/releases/download/$cmd_version/$archive_file"
+    pushd /tmp
+    wget $download_url > /dev/null 2>&1
+    tar xvf $archive_file > /dev/null 2>&1
+    cp $archive_name/autocomplete/$cmd_name.fish $completions_dir/$cmd_name.fish
+    rm -rf $archive_file*
+    popd
 end
