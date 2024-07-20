@@ -1,5 +1,23 @@
 ## Changelog
 
+## [v2024.07.20]
+
+### Added - 新機能について
+
+- feat: add helix completion
+
+### Changed - 既存機能の変更について
+
+- chore(deps): update
+
+### Removed - 今回で削除された機能について
+
+なし
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2024.06.04]
 
 ### Added - 新機能について
