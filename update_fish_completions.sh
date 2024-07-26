@@ -135,6 +135,14 @@ if command_exist fish-lsp; then
   pueue add -- "fish-lsp complete --fish > '${COMPLETIONS_DIR}'/fish-lsp.fish"
 fi
 
+if command_exist foot; then
+  pueue add -- "curl -L https://codeberg.org/dnkl/foot/raw/branch/master/completions/fish/foot.fish -o '${COMPLETIONS_DIR}'/foot.fish"
+fi
+
+if command_exist footclient; then
+  pueue add -- "curl -L https://codeberg.org/dnkl/foot/raw/branch/master/completions/fish/footclient.fish -o '${COMPLETIONS_DIR}'/footclient.fish"
+fi
+
 for cmd in "bat" "hyperfine" "pastel"; do
   if command_exist "${cmd}"; then
     update_sharkdp_tool_completions "${cmd}"

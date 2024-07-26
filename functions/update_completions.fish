@@ -134,6 +134,16 @@ function update_completions --description 'Update completions'
         fish-lsp complete --fish > $completions_dir/fish-lsp.fish
     end
 
+    echo "Update: foot completion"
+    if command_exist foot
+      curl -L https://codeberg.org/dnkl/foot/raw/branch/master/completions/fish/foot.fish -o $completions_dir/foot.fish >/dev/null 2>&1
+    end
+
+    echo "Update: footclient completion"
+    if command_exist footclient
+      curl -L https://codeberg.org/dnkl/foot/raw/branch/master/completions/fish/footclient.fish -o $completions_dir/footclient.fish >/dev/null 2>&1
+    end
+
     echo "Update: sharkdp/bat, sharkdp/hyperfine and sharkdp/pastel completions"
     for cmd in bat hyperfine pastel
         if command_exist $cmd
