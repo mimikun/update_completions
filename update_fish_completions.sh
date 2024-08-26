@@ -143,6 +143,10 @@ if command_exist footclient; then
   pueue add -- "curl -L https://codeberg.org/dnkl/foot/raw/branch/master/completions/fish/footclient.fish -o '${COMPLETIONS_DIR}'/footclient.fish"
 fi
 
+if command_exist nix; then
+  pueue add -- "curl -L https://raw.githubusercontent.com/NixOS/nix/master/misc/fish/completion.fish -o '${COMPLETIONS_DIR}'/nix.fish"
+fi
+
 for cmd in "bat" "hyperfine" "pastel"; do
   if command_exist "${cmd}"; then
     update_sharkdp_tool_completions "${cmd}"
