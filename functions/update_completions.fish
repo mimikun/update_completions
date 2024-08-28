@@ -134,6 +134,11 @@ function update_completions --description 'Update completions'
         fish-lsp complete --fish > $completions_dir/fish-lsp.fish
     end
 
+    echo "Update: atuin completion"
+    if command_exist atuin
+        atuin gen-completions --shell fish > $completions_dir/atuin.fish
+    end
+
     echo "Update: foot completion"
     if command_exist foot
       curl -L https://codeberg.org/dnkl/foot/raw/branch/master/completions/fish/foot.fish -o $completions_dir/foot.fish >/dev/null 2>&1
