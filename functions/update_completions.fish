@@ -154,6 +154,11 @@ function update_completions --description 'Update completions'
       curl -L https://raw.githubusercontent.com/NixOS/nix/master/misc/fish/completion.fish -o $completions_dir/nix.fish >/dev/null 2>&1
     end
 
+    echo "Update: nb completion"
+    if command_exist nb
+      curl -L https://raw.githubusercontent.com/xwmx/nb/refs/heads/master/etc/nb-completion.fish -o $completions_dir/nb.fish >/dev/null 2>&1
+    end
+
     echo "Update: sharkdp/bat, sharkdp/hyperfine and sharkdp/pastel completions"
     for cmd in bat hyperfine pastel
         if command_exist $cmd
