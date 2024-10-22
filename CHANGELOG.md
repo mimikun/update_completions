@@ -1,5 +1,25 @@
 ## Changelog
 
+## [v2024.10.22]
+
+### Added - 新機能について
+
+なし
+
+### Changed - 既存機能の変更について
+
+なし
+
+### Removed - 今回で削除された機能について
+
+- chore: remove sheldon completion
+    - sheldon no longer supports fish-shell
+    - ref: https://github.com/rossmacarthur/sheldon/commit/a804ff231e48a9c7e6895871da9ea926e017058d
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2024.10.17]
 
 ### Added - 新機能について
