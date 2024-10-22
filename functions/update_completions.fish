@@ -73,11 +73,6 @@ function update_completions --description 'Update completions'
         procs --gen-completion-out fish > $completions_dir/procs.fish
     end
 
-    echo "Update: sheldon completion"
-    if command_exist sheldon
-      sheldon completions --shell fish > $completions_dir/sheldon.fish
-    end
-
     echo "Update: eza completion"
     if command_exist eza
         curl -L https://raw.githubusercontent.com/eza-community/eza/main/completions/fish/eza.fish -o $completions_dir/exa.fish >/dev/null 2>&1
