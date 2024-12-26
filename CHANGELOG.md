@@ -1,5 +1,24 @@
 ## Changelog
 
+## [v2024.12.26]
+
+### Added - 新機能について
+
+- feat: add hoard completion
+- feat: add ast-grep completion
+
+### Changed - 既存機能の変更について
+
+なし
+
+### Removed - 今回で削除された機能について
+
+- chore: remove fish function
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2024.10.22]
 
 ### Added - 新機能について
