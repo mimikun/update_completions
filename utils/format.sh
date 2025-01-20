@@ -17,4 +17,5 @@ run_shfmt create-patch.sh
 run_shfmt format.sh
 run_shfmt install.sh
 run_shfmt lint.sh
+run_shfmt git-clean-fetch.sh
 cd "$current_dir" || exit

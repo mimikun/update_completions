@@ -111,7 +111,7 @@ changelog :
 ## Run git cleanfetch
 .PHONY : clean-fetch
 clean-fetch :
-	git cleanfetch
+	bash utils/git-clean-fetch.sh
 
 ## Run git pull
 .PHONY : pull
