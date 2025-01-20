@@ -1,5 +1,23 @@
 ## Changelog
 
+## [v2025.01.20]
+
+### Added - 新機能について
+
+- feat: add qsv completion
+
+### Changed - 既存機能の変更について
+
+- chore(deps): update
+
+### Removed - 今回で削除された機能について
+
+なし
+
+### Fixed - 不具合修正について
+
+- fix(utils): git-clean-fetch
+
 ## [v2025.01.08]
 
 ### Added - 新機能について
