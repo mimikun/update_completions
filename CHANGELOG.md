@@ -1,5 +1,28 @@
 ## Changelog
 
+## [v2025.03.19]
+
+### Added - 新機能について
+
+- Add .whitesource configuration file
+- feat: add some completions
+  - sake and mani
+- feat: add nvs completion
+- feat: add some completions
+  - rip, gitleaks, lefthook
+
+### Changed - 既存機能の変更について
+
+- chore(deps): update
+
+### Removed - 今回で削除された機能について
+
+なし
+
+### Fixed - 不具合修正について
+
+なし
+
 ## [v2025.02.12]
 
 ### Added - 新機能について
